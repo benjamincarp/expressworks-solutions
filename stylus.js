@@ -1,10 +1,12 @@
 var path = require('path');
 var express = require('express');
 var bodyparser = require('body-parser');
+var stylus = require('stylus');
 
 var app = express();
 
 app.use(bodyparser.urlencoded({extended: false}));
+app.use(stylus.middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'jade');
